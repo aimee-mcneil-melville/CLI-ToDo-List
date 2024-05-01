@@ -27,13 +27,13 @@
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
   "devDependencies": {
-    "@devacademy/eslint-config": "^1.9.1",
-    "eslint": "^8.10.0",
-    "eslint-plugin-import": "^2.25.4",
+    "@devacademy/eslint-config": "^1.10.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.1",
     "prettier": "^3.2.5",
     "vitest": "^1.2.0"
   },
