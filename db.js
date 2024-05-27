@@ -27,3 +27,7 @@ export async function updateRow(id, data) {
 export async function searchTable(data) {
   return await db('todos').whereLike('task', `%${data}%`)
 }
+
+export async function updateCompleted(id, data) {
+  return await db('todos').where('id', id).update('completed', data)
+}

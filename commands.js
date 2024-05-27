@@ -5,6 +5,7 @@ import {
   addRow,
   updateRow,
   searchTable,
+  updateCompleted,
 } from './db.js'
 
 export async function list() {
@@ -20,7 +21,7 @@ export async function list() {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    console.info(`${todo.id}: ${todo.task}: ${todo.completed}`)
   })
 }
 
@@ -61,8 +62,19 @@ export async function updateTodo(id, data) {
 
 export async function searchTodo(data) {
   try {
-    const todos = await searchTable(data)
-    printTodos(todos)
+    const todo = await searchTable(data)
+    printTodos(todo)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function updateCompletedTodo(id, data) {
+  try {
+    const todos = await updateCompleted(id, data)
+    console.log(todos)
   } catch (err) {
     logError(err)
   } finally {
