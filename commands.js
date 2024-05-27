@@ -1,4 +1,4 @@
-import { getTodos, close, deleteRow, addRow } from './db.js'
+import { getTodos, close, deleteRow, addRow, updateRow } from './db.js'
 
 export async function list() {
   try {
@@ -35,6 +35,16 @@ export async function deleteTodo(id) {
 export async function addTodo(data) {
   try {
     await addRow(data)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function updateTodo(id, data) {
+  try {
+    await updateRow(id, data)
   } catch (err) {
     logError(err)
   } finally {
