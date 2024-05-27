@@ -6,6 +6,8 @@ import {
   updateRow,
   searchTable,
   updateCompleted,
+  getIncompleteTodos,
+  updatePriority,
 } from './db.js'
 
 export async function list() {
@@ -21,7 +23,9 @@ export async function list() {
 
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}: ${todo.completed}`)
+    console.info(
+      `${todo.id}: ${todo.task}: ${todo.completed}: ${todo.priority}`,
+    )
   })
 }
 
@@ -74,6 +78,28 @@ export async function searchTodo(data) {
 export async function updateCompletedTodo(id, data) {
   try {
     const todos = await updateCompleted(id, data)
+    console.log(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function listIncomplete() {
+  try {
+    const todos = await getIncompleteTodos()
+    printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function updatePriorityTodo(id, data) {
+  try {
+    const todos = await updatePriority(id, data)
     console.log(todos)
   } catch (err) {
     logError(err)

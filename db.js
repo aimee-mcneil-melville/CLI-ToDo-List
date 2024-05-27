@@ -31,3 +31,11 @@ export async function searchTable(data) {
 export async function updateCompleted(id, data) {
   return await db('todos').where('id', id).update('completed', data)
 }
+
+export async function getIncompleteTodos() {
+  return await db('todos').where('complete' != '0')
+}
+
+export async function updatePriority(id, data) {
+  return await db('todos').where('id', id).update('priority', data)
+}

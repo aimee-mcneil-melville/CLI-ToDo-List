@@ -25,6 +25,13 @@ switch (cmd) {
   case 'updateStatus':
     await commands.updateCompletedTodo(value, input)
     break
+  case 'stillToDo':
+    await commands.listIncomplete()
+    break
+  case 'updatePriority':
+    await commands.updatePriorityTodo(value, input)
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
