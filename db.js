@@ -13,5 +13,9 @@ export function close() {
 }
 
 export async function deleteRow(id) {
-  return await db('todos').where('id', Number(id)).del()
+  return await db('todos').where('id', id).del()
+}
+
+export async function addRow(data) {
+  return await db('todos').insert({ task: data })
 }

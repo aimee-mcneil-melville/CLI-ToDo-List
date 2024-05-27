@@ -1,4 +1,4 @@
-import { getTodos, close, deleteRow } from './db.js'
+import { getTodos, close, deleteRow, addRow } from './db.js'
 
 export async function list() {
   try {
@@ -25,6 +25,16 @@ export async function deleteTodo(id) {
   try {
     await deleteRow(Number(id))
     await list()
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function addTodo(data) {
+  try {
+    await addRow(data)
   } catch (err) {
     logError(err)
   } finally {
