@@ -11,3 +11,7 @@ export function getTodos() {
 export function close() {
   db.destroy()
 }
+
+export async function deleteRow(id) {
+  return await db('todos').where('id', Number(id)).del()
+}
