@@ -19,6 +19,9 @@ switch (cmd) {
   case 'update':
     await commands.updateTodo(value, input)
     break
+  case 'search':
+    await commands.searchTodo(value)
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }

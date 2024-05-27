@@ -1,4 +1,11 @@
-import { getTodos, close, deleteRow, addRow, updateRow } from './db.js'
+import {
+  getTodos,
+  close,
+  deleteRow,
+  addRow,
+  updateRow,
+  searchTable,
+} from './db.js'
 
 export async function list() {
   try {
@@ -45,6 +52,17 @@ export async function addTodo(data) {
 export async function updateTodo(id, data) {
   try {
     await updateRow(id, data)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function searchTodo(data) {
+  try {
+    const todos = await searchTable(data)
+    printTodos(todos)
   } catch (err) {
     logError(err)
   } finally {

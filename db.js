@@ -23,3 +23,7 @@ export async function addRow(data) {
 export async function updateRow(id, data) {
   return await db('todos').where('id', id).update('task', data)
 }
+
+export async function searchTable(data) {
+  return await db('todos').whereLike('task', `%${data}%`)
+}
